@@ -1,0 +1,11 @@
+<mapper namespace="user">
+
+    <select id="selectList">
+        SELECT * FROM user
+    </select>
+
+    <select id="selectByUsername">
+        SELECT * FROM user WHERE user_name = ?
+    </select>
+
+</mapper>

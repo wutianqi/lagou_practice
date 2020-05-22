@@ -1,0 +1,12 @@
+<configuration>
+
+    <dataSource>
+        <!--数据库配置信息-->
+        <property name="driver.class" value="com.mysql.jdbc.Driver" />
+        <property name="driver.url" value="jdbc:mysql://localhost:3306/lagou_mybatis" />
+        <property name="username" value="root" />
+        <property name="password" value="root" />
+    </dataSource>
+
+    <mapper resource="SqlMapConfig.xml" />
+</configuration>
