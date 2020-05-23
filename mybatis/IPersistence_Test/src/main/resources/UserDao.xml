@@ -1,0 +1,12 @@
+<mapper namespace="com.lagou.dao.UserDao">
+
+    <!--sql的唯一标识，namespace.id即statementId-->
+    <select id="findAll" resultType="com.lagou.pojo.User">
+        SELECT * FROM user
+    </select>
+
+    <select id="findByCondition" parameterType="com.lagou.pojo.User" resultType="com.lagou.pojo.User">
+        SELECT * FROM user WHERE id = #{id} AND username = #{username}
+    </select>
+
+</mapper>

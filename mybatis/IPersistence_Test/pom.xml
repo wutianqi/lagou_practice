@@ -11,5 +11,12 @@
 
     <artifactId>IPersistence_Test</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.lagou</groupId>
+            <artifactId>IPersistence</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
