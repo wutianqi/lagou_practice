@@ -27,10 +27,11 @@ public class IPersistenceTest {
     @Test
     public void testUpdate() throws PropertyVetoException, DocumentException, ClassNotFoundException, SQLException, IllegalAccessException, NoSuchFieldException {
         SqlSession sqlSession = getSqlSession();
+        UserDao userDao = sqlSession.getDao(UserDao.class);
         User user = new User();
         user.setId(1);
-        user.setUsername("zsss");
-        int affectRows = sqlSession.update("com.lagou.dao.UserDao.update", user);
+        user.setUsername("lisisi");
+        int affectRows = userDao.update(user);
         System.out.println(affectRows);
     }
 
@@ -40,9 +41,10 @@ public class IPersistenceTest {
     @Test
     public void testAdd() throws PropertyVetoException, DocumentException, ClassNotFoundException, SQLException, IllegalAccessException, NoSuchFieldException {
         SqlSession sqlSession = getSqlSession();
+        UserDao userDao = sqlSession.getDao(UserDao.class);
         User user = new User();
         user.setUsername("zsss");
-        int affectRows = sqlSession.add("com.lagou.dao.UserDao.insert", user);
+        int affectRows = userDao.insert(user);
         System.out.println(affectRows);
     }
 
@@ -52,17 +54,12 @@ public class IPersistenceTest {
     @Test
     public void testDelete() throws PropertyVetoException, DocumentException, ClassNotFoundException, SQLException, IllegalAccessException, NoSuchFieldException {
         SqlSession sqlSession = getSqlSession();
+        UserDao userDao = sqlSession.getDao(UserDao.class);
         User user = new User();
-        user.setId(5);
-        int affectRows = sqlSession.delete("com.lagou.dao.UserDao.delete", user);
+        user.setId(6);
+        int affectRows = userDao.delete(user);
         System.out.println(affectRows);
     }
-
-
-
-
-
-
 
     /**
      * 测试查询

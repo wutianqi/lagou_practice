@@ -39,7 +39,7 @@ public interface SqlSession {
      * @param params 参数
      * @return
      */
-    public int add(String statementId, Object... params) throws ClassNotFoundException, SQLException, NoSuchFieldException, IllegalAccessException;
+    public int insert(String statementId, Object... params) throws ClassNotFoundException, SQLException, NoSuchFieldException, IllegalAccessException;
 
     /**
      * 删除

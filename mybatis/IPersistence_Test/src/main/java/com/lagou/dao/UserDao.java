@@ -8,16 +8,38 @@ import java.util.List;
  * Dao层接口
  */
 public interface UserDao {
+
+    /**
+     * 更新
+     * @param user 参数对象
+     * @return
+     */
+    int update(User user);
+
+    /**
+     * 插入
+     * @param user 参数对象
+     * @return
+     */
+    int insert(User user);
+
+    /**
+     * 删除
+     * @param user 参数对象
+     * @return
+     */
+    int delete(User user);
+
     /**
      * 根据条件查找
      * @param user 条件
      * @return
      */
-    public User findByCondition(User user);
+    User findByCondition(User user);
 
     /**
      * 查找所有
      * @return
      */
-    public List<User> findAll();
+    List<User> findAll();
 }
