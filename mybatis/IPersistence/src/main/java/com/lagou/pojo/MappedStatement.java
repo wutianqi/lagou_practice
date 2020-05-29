@@ -1,5 +1,7 @@
 package com.lagou.pojo;
 
+import com.lagou.enums.SqlCommandType;
+
 /**
  * 封装mapper.xml的容器对象
  */
@@ -23,6 +25,11 @@ public class MappedStatement {
      * sql
      */
     private String sql;
+
+    /**
+     * sql命令类型
+     */
+    private SqlCommandType sqlCommandType;
 
 
     public String getId() {
@@ -55,5 +62,13 @@ public class MappedStatement {
 
     public void setSql(String sql) {
         this.sql = sql;
+    }
+
+    public SqlCommandType getSqlCommandType() {
+        return sqlCommandType;
+    }
+
+    public void setSqlCommandType(SqlCommandType sqlCommandType) {
+        this.sqlCommandType = sqlCommandType;
     }
 }

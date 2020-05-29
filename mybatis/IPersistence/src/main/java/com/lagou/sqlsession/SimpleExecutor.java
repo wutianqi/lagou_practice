@@ -41,19 +41,7 @@ public class SimpleExecutor implements Executor{
         PreparedStatement preparedStatement = connection.prepareStatement(boundSql.getSql());
 
         //3.参数设置
-        String parameterType = mappedStatement.getParameterType();
-        //参数的类型
-        Class<?> parameterTypeClass = getClassType(parameterType);
-        List<ParameterMapping> parameterMappingList = boundSql.getParameterMappingList();
-        for(int i=0;i<parameterMappingList.size();i++){
-            ParameterMapping parameterMapping = parameterMappingList.get(i);
-            //获取到参数的名字，我们需要拿到该参数在对象中的值。需要通过反射实现。
-            String parameterName = parameterMapping.getContent();
-            Field field = parameterTypeClass.getDeclaredField(parameterName);
-            field.setAccessible(true);
-            Object paramValue = field.get(params[0]);
-            preparedStatement.setObject(i+1, paramValue);
-        }
+        setParam(boundSql, params, mappedStatement, preparedStatement);
 
         //4.执行sql语句
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -78,7 +66,47 @@ public class SimpleExecutor implements Executor{
 
             resultList.add(resultTypeObj);
         }
+
         return (T) resultList;
+    }
+
+    @Override
+    public int update(Configuration configuration, MappedStatement mappedStatement, Object[] params) throws SQLException, IllegalAccessException, NoSuchFieldException, ClassNotFoundException {
+        //获取数据库连接
+        Connection connection = configuration.getDataSource().getConnection();
+
+        //解析sql语句中的占位符，获取BoundSql
+        String sql = mappedStatement.getSql();
+        BoundSql boundSql = getBoundSql(sql);
+
+        //获取PreparedStatement
+        PreparedStatement preparedStatement = connection.prepareStatement(boundSql.getSql());
+
+        //设置参数
+        setParam(boundSql, params, mappedStatement, preparedStatement);
+
+        //执行sql语句,获取返回值
+        int affectRows = preparedStatement.executeUpdate();
+
+//        connection.commit();
+
+        return affectRows;
+    }
+
+    private void setParam(BoundSql boundSql, Object[] params, MappedStatement mappedStatement, PreparedStatement preparedStatement) throws NoSuchFieldException, ClassNotFoundException, IllegalAccessException, SQLException {
+        String parameterType = mappedStatement.getParameterType();
+        //参数的类型
+        Class<?> parameterTypeClass = getClassType(parameterType);
+        List<ParameterMapping> parameterMappingList = boundSql.getParameterMappingList();
+        for(int i=0;i<parameterMappingList.size();i++){
+            ParameterMapping parameterMapping = parameterMappingList.get(i);
+            //获取到参数的名字，我们需要拿到该参数在对象中的值。需要通过反射实现。
+            String parameterName = parameterMapping.getContent();
+            Field field = parameterTypeClass.getDeclaredField(parameterName);
+            field.setAccessible(true);
+            Object paramValue = field.get(params[0]);
+            preparedStatement.setObject(i+1, paramValue);
+        }
     }
 
     private Class<?> getClassType(String parameterType) throws ClassNotFoundException {

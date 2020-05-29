@@ -36,6 +36,21 @@ public class DefaultSqlSession implements SqlSession{
     }
 
     @Override
+    public int update(String statementId, Object... params) throws ClassNotFoundException, SQLException, NoSuchFieldException, IllegalAccessException {
+        return doUpdate(statementId, params);
+    }
+
+    @Override
+    public int add(String statementId, Object... params) throws ClassNotFoundException, SQLException, NoSuchFieldException, IllegalAccessException {
+        return doUpdate(statementId, params);
+    }
+
+    @Override
+    public int delete(String statementId, Object... params) throws ClassNotFoundException, SQLException, NoSuchFieldException, IllegalAccessException {
+        return doUpdate(statementId, params);
+    }
+
+    @Override
     public <T> T getDao(Class<T> daoClazz) {
         //生成相应dao类型的代理对象，以实现对数据库的操作
         ClassLoader classLoader = this.getClass().getClassLoader();
@@ -69,5 +84,15 @@ public class DefaultSqlSession implements SqlSession{
             }
         };
         return (T) Proxy.newProxyInstance(classLoader, interfaces, invocationHandler);
+    }
+
+
+    private int doUpdate(String statementId, Object[] params) throws ClassNotFoundException, SQLException, NoSuchFieldException, IllegalAccessException {
+        //根据sql的全局唯一id获取MappedStatement
+        MappedStatement mappedStatement = configuration.getStatementMap().get(statementId);
+
+        //交给SimpleExecutor执行
+        Executor executor = new SimpleExecutor();
+        return executor.update(configuration, mappedStatement, params);
     }
 }

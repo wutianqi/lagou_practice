@@ -7,6 +7,7 @@ import com.lagou.sqlsession.SqlSession;
 import com.lagou.sqlsession.SqlSessionFactory;
 import com.lagou.sqlsession.SqlSessionFactoryBuilder;
 import org.dom4j.DocumentException;
+import org.junit.Test;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyVetoException;
@@ -20,10 +21,56 @@ import java.util.List;
  */
 public class IPersistenceTest {
 
-    public static void main(String[] args) throws PropertyVetoException, DocumentException, SQLException, IllegalAccessException, InvocationTargetException, IntrospectionException, InstantiationException, NoSuchFieldException, NoSuchMethodException, ClassNotFoundException {
-        InputStream in = Resources.getResourceAsStream("/SqlMapConfig.xml");
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(in);
-        SqlSession sqlSession = sqlSessionFactory.openSession();
+    /**
+     * 测试更新
+     */
+    @Test
+    public void testUpdate() throws PropertyVetoException, DocumentException, ClassNotFoundException, SQLException, IllegalAccessException, NoSuchFieldException {
+        SqlSession sqlSession = getSqlSession();
+        User user = new User();
+        user.setId(1);
+        user.setUsername("zsss");
+        int affectRows = sqlSession.update("com.lagou.dao.UserDao.update", user);
+        System.out.println(affectRows);
+    }
+
+    /**
+     * 测试增加
+     */
+    @Test
+    public void testAdd() throws PropertyVetoException, DocumentException, ClassNotFoundException, SQLException, IllegalAccessException, NoSuchFieldException {
+        SqlSession sqlSession = getSqlSession();
+        User user = new User();
+        user.setUsername("zsss");
+        int affectRows = sqlSession.add("com.lagou.dao.UserDao.insert", user);
+        System.out.println(affectRows);
+    }
+
+    /**
+     * 测试删除
+     */
+    @Test
+    public void testDelete() throws PropertyVetoException, DocumentException, ClassNotFoundException, SQLException, IllegalAccessException, NoSuchFieldException {
+        SqlSession sqlSession = getSqlSession();
+        User user = new User();
+        user.setId(5);
+        int affectRows = sqlSession.delete("com.lagou.dao.UserDao.delete", user);
+        System.out.println(affectRows);
+    }
+
+
+
+
+
+
+
+    /**
+     * 测试查询
+     */
+    @Test
+    public void testQuery() throws PropertyVetoException, DocumentException, SQLException, IllegalAccessException, InvocationTargetException, IntrospectionException, InstantiationException, NoSuchFieldException, NoSuchMethodException, ClassNotFoundException {
+        SqlSession sqlSession = getSqlSession();
+
         User user = new User();
         user.setId(1);
         user.setUsername("zs");
@@ -47,6 +94,13 @@ public class IPersistenceTest {
         //Dao代理类查询所有
         List<User> users = dao.findAll();
         System.out.println(users);
+    }
+
+    private SqlSession getSqlSession() throws PropertyVetoException, DocumentException {
+        InputStream in = Resources.getResourceAsStream("/SqlMapConfig.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(in);
+
+        return sqlSessionFactory.openSession();
     }
 
 }
