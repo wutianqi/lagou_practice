@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lagou.dao.OrderDao">
+    <resultMap id="orderMap" type="com.lagou.pojo.Order">
+        <id property="id" column="id" />
+        <id property="ordertime" column="ordertime" />
+        <id property="total" column="total" />
+        <association property="user" javaType="com.lagou.pojo.User">
+            <id property="id" column="uid" />
+            <id property="username" column="username" />
+        </association>
+    </resultMap>
+
+    <select id="findByCondition" parameterType="com.lagou.pojo.User" resultMap="orderMap">
+        SELECT * FROM `orders` o, `user` u
+         <where>
+             o.uid = u.id
+             <if test="id != null">
+                 AND u.id = #{id}
+             </if>
+             <if test="username != null and username != ''">
+                 AND u.username = #{username}
+             </if>
+         </where>
+    </select>
+</mapper>

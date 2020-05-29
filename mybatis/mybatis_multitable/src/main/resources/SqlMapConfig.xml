@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <properties resource="dataSource.properties" >
+        <property name="username" value="root"/>
+    </properties>
+
+    <settings>
+        <!--二级缓存缓存配置，默认是true-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <plugins>
+        <!--自定义插件注册-->
+<!--        <plugin interceptor="com.lagou.plugin.MyPlugin" >-->
+<!--            <property name="name" value="ls"/>-->
+<!--        </plugin>-->
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="mysql"/>
+        </plugin>
+
+        <!--通用Mapper-->
+        <plugin interceptor="tk.mybatis.mapper.mapperhelper.MapperInterceptor">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+        </plugin>
+    </plugins>
+
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql:///lagou?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;rewriteBatchedStatements=TRUE&amp;useTimezone=true&amp;serverTimezone=GMT%2B8"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!--注解开发需要指定的配置-->
+<!--        <mapper class="com.lagou.dao.UserDao" />-->
+        <!--这里需要保证类的全限定类名和该包下的文件名相同。-->
+        <package name="com.lagou.dao"/>
+    </mappers>
+
+
+</configuration>
