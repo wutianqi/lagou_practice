@@ -6,8 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="IPersistence_Test" />
         <module name="IPersistence" />
+        <module name="mybatis_quickStart" />
+        <module name="mybatis_multitable" />
+        <module name="IPersistence_Test" />
       </profile>
     </annotationProcessing>
   </component>
