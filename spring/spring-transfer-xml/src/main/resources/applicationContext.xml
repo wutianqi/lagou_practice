@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd"
+>
+    <!--获取连接的类-->
+    <bean id ="connectionUtil" class="com.lagou.edu.utils.ConnectionUtil" />
+
+    <!--事务管理器-->
+    <bean id = "transactionManager" class="com.lagou.edu.utils.TransactionManager" >
+        <property name="connectionUtil" ref="connectionUtil" />
+    </bean>
+
+    <!--动态代理工厂类-->
+    <bean id = "proxyFactory" class="com.lagou.edu.factory.ProxyFactory">
+        <property name="transactionManager" ref="transactionManager" />
+    </bean>
+
+    <!--id是bean的唯一标识，class为类的全限定类名-->
+    <bean id="accountDao" class="com.lagou.edu.dao.impl.JdbcAccountDaoImpl" >
+        <property name="connectionUtil" ref="connectionUtil" />
+    </bean>
+
+    <!--实例化对象的三种方式-->
+    <!--1.普通bean创建-->
+    <bean id="transferService" class="com.lagou.edu.service.impl.TransferServiceImpl" >
+        <!--声明transferService所需要的属性，让工厂帮我们注入进去-->
+        <property name="accountDao" ref="accountDao" />
+    </bean>
+
+    <!--下面两种方法是我们手动创建对象-->
+    <!--2.静态方法创建-->
+    <!--多例spring是不管理其生命周期的-->
+    <bean id="user" class="com.lagou.edu.factory.StaticMethodFactoryBean" factory-method="getUser" scope="prototype"
+        init-method="inti" destroy-method="destory"/>
+
+    <!--3.实例化方法-->
+    <bean id="instanceMethodFactoryBean" class="com.lagou.edu.factory.InstanceMethodFactoryBean" />
+    <bean id="user2"  factory-bean="instanceMethodFactoryBean" factory-method="getUser" />
+
+    <!--依赖注入-->
+    <!--1.构造函数注入-->
+    <bean id="diObj" class="com.lagou.edu.pojo.DIObj">
+        <constructor-arg name="id" value="1" />
+        <constructor-arg name="name" value="zs" />
+    </bean>
+
+    <!--2.set注入-->
+    <bean id="diObj2" class="com.lagou.edu.pojo.DIObj" >
+        <!--集合-->
+        <property name="list">
+           <list>
+               <value>abc</value>
+               <value>abc</value>
+               <value>abc</value>
+           </list>
+        </property>
+        <!--数组-->
+        <property name="array">
+            <array>
+                <value>333</value>
+                <value>333</value>
+                <value>333</value>
+            </array>
+        </property>
+        <!--map-->
+        <property name="map">
+            <util:map>
+                <entry key="name" value="zs" />
+                <entry key="age" value="12" />
+            </util:map>
+        </property>
+    </bean>
+</beans>

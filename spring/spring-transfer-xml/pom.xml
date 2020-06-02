@@ -9,11 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>no-spring-transfer</artifactId>
-    <description>没有使用spring，自定义IOC框架的转账案例</description>
+    <artifactId>spring-transfer-xml</artifactId>
+    <description>使用Spring全xml的转账案例</description>
     <packaging>war</packaging>
 
-    <name>no-spring-transfer Maven Webapp</name>
+    <name>spring-transfer-xml Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
@@ -77,6 +77,16 @@
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
             <version>2.1_2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.1.12.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>5.1.12.RELEASE</version>
         </dependency>
     </dependencies>
 
