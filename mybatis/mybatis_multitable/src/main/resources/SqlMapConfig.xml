@@ -10,6 +10,10 @@
     <settings>
         <!--二级缓存缓存配置，默认是true-->
         <setting name="cacheEnabled" value="true"/>
+        <!--开启懒加载-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--所有属性均懒加载-->
+        <setting name="aggressiveLazyLoading" value="false"/>
     </settings>
 
     <plugins>

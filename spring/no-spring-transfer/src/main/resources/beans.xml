@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+    <!--
+        将需要创建的类声明在配置文件中，让容器加载创建，这里需要注意的事项是：
+        被引用的对象需要声明在最上面，因为自己写的类是按照声明顺序加载的
+    -->
+    <!--获取连接的类-->
+    <bean id ="connectionUtil" class="com.lagou.edu.utils.ConnectionUtil" />
+
+    <!--事务管理器-->
+    <bean id = "transactionManager" class="com.lagou.edu.utils.TransactionManager" >
+        <property name="connectionUtil" ref="connectionUtil" />
+    </bean>
+
+    <!--动态代理工厂类-->
+    <bean id = "proxyFactory" class="com.lagou.edu.factory.ProxyFactory">
+        <property name="transactionManager" ref="transactionManager" />
+    </bean>
+
+    <!--id是bean的唯一标识，class为类的全限定类名-->
+    <bean id="accountDao" class="com.lagou.edu.dao.impl.JdbcAccountDaoImpl" >
+        <property name="connectionUtil" ref="connectionUtil" />
+    </bean>
+    <bean id="transferService" class="com.lagou.edu.service.impl.TransferServiceImpl" >\
+        <!--声明transferService所需要的属性，让工厂帮我们注入进去-->
+        <property name="accountDao" ref="accountDao" />
+    </bean>
+</beans>

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.mapping.FetchType;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public interface OrderDao {
                     @Result(property = "ordertime", column = "ordertime"),
                     @Result(property = "total", column = "total"),
                     @Result(property = "user", column = "uid", javaType = User.class,one = @One(
-                            select = "com.lagou.dao.UserDao.findById"
+                            select = "com.lagou.dao.UserDao.findById", fetchType = FetchType.LAZY //开启懒加载
                     ))
             }
     )

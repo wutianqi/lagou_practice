@@ -30,7 +30,7 @@ public class MultitableTest {
         OrderDao mapper = sqlSession.getMapper(OrderDao.class);
         User user = new User();
         user.setId(1);
-        List<Order> orders = mapper.findByCondition(user);
+        List<Order> orders = mapper.findByAll();
         for(Order order : orders){
             System.out.println(order);
         }
