@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1a901b6f-df67-4532-a3ad-235c7fe8d753" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../spring/spring-transfer-anno/src/main/java/com/lagou/edu/config/SpringConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring/spring-transfer-anno/src/main/java/com/lagou/edu/factory/MyFactoryBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring/spring-transfer-xml-anno/src/main/resources/jdbc.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../spring/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/spring-transfer-xml-anno/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../spring/spring-transfer-xml-anno/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/spring-transfer-xml-anno/src/main/java/com/lagou/edu/factory/InstanceMethodFactoryBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/spring-transfer-xml-anno/src/main/java/com/lagou/edu/factory/StaticMethodFactoryBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/spring-transfer-xml-anno/src/main/java/com/lagou/edu/pojo/DIObj.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/spring-transfer-xml-anno/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../spring/spring-transfer-xml-anno/src/main/resources/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/spring-transfer-xml/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../spring/spring-transfer-xml/src/main/resources/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/spring.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../spring/spring.iml" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-aop/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-aop/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-aop/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-aspects/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-aspects/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-aspects/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-beans/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-beans/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-beans/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/buildSrc/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/buildSrc/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/buildSrc/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-context/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-context/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-context/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-context-indexer/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-context-indexer/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-context-indexer/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-context-support/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-context-support/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-context-support/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-core/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-core/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-core/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-expression/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-expression/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-expression/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-framework-bom/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-framework-bom/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-framework-bom/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-instrument/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-instrument/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-instrument/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-jcl/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-jcl/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-jcl/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-jdbc/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-jdbc/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-jdbc/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-jms/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-jms/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-jms/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-messaging/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-messaging/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-messaging/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-orm/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-orm/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-orm/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-oxm/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-oxm/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-oxm/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-test/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-test/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-test/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-tx/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-tx/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-tx/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-web/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-web/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-web/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-webflux/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-webflux/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-webflux/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-webmvc/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-webmvc/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-webmvc/out/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-websocket/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-websocket/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-5.1.x/spring-websocket/out/" />
+    <ignored path="$PROJECT_DIR$/spring-lagou/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-lagou/build/" />
+    <ignored path="$PROJECT_DIR$/spring-lagou/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/spring-framework-5.1.x">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/spring-framework-5.1.x/spring-lagou">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/spring-lagou">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/spring-framework-5.1.x/spring-core">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/spring-framework-5.1.x/spring-oxm">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/spring-framework-5.1.x/spring-context">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/spring-framework-5.1.x/spring-beans">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/spring-framework-5.1.x/spring-aspects">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/spring-framework-5.1.x/spring-aop">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/spring-lagou">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/spring-framework-5.1.x/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="284" selection-start-line="284" selection-end-line="284" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-framework-5.1.x/spring-beans/spring-beans.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-189" />
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/spring-lagou/build.gradle" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="userSettingsFile" value="D:\software\maven\apache-maven-3.6.0\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/spring_source.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/gradle.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules/spring-orm/spring.spring-orm.test.iml" />
+        <option value="$PROJECT_DIR$/.idea/modules/spring-webmvc/spring.spring-webmvc.test.iml" />
+        <option value="$PROJECT_DIR$/.idea/compiler.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-10" />
+    <option name="width" value="980" />
+    <option name="height" value="1050" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="spring_source" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring_source" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/spring-framework-5.1.x" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.46781608" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.spring-framework-5.1.x:spring-aop [compileTestJava]">
+    <configuration name="spring-framework-5.1.x:spring-aop [compileTestJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-framework-5.1.x/spring-aop" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="compileTestJava" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="spring-framework-5.1.x:spring-aspects [compileTestJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-framework-5.1.x/spring-aspects" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="compileTestJava" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="spring-framework-5.1.x:spring-beans [compileTestJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-framework-5.1.x/spring-beans" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="compileTestJava" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="spring-framework-5.1.x:spring-context [compileTestJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-framework-5.1.x/spring-context" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="compileTestJava" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="spring-framework-5.1.x:spring-oxm [compileTestJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-framework-5.1.x/spring-oxm" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="compileTestJava" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.spring-framework-5.1.x:spring-aop [compileTestJava]" />
+        <item itemvalue="Gradle.spring-framework-5.1.x:spring-aspects [compileTestJava]" />
+        <item itemvalue="Gradle.spring-framework-5.1.x:spring-beans [compileTestJava]" />
+        <item itemvalue="Gradle.spring-framework-5.1.x:spring-context [compileTestJava]" />
+        <item itemvalue="Gradle.spring-framework-5.1.x:spring-oxm [compileTestJava]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1a901b6f-df67-4532-a3ad-235c7fe8d753" name="Default Changelist" comment="" />
+      <created>1591147402763</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591147402763</updated>
+      <workItem from="1591147404153" duration="2972000" />
+      <workItem from="1591152304153" duration="1444000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="4416000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2533512" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Persistence" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="UI Designer" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info id="Web" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.37427744" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.50722545" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" />
+      <window_info anchor="bottom" id="Spring" order="12" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.3297587" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="JSF" order="6" />
+      <window_info anchor="right" id="Gradle" order="7" visible="true" weight="0.19638069" />
+      <window_info anchor="right" id="Database" order="8" />
+      <window_info anchor="right" id="Palette&#9;" order="9" />
+      <window_info anchor="right" id="Theme Preview" order="10" />
+      <window_info anchor="right" id="Bean Validation" order="11" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/spring-framework-5.1.x/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-453" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-framework-5.1.x/spring-beans/spring-beans.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-189" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-lagou/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-lagou/gradlew.bat">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-lagou/gradlew">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-lagou/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-framework-5.1.x/spring-lagou/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-framework-5.1.x/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="284" selection-start-line="284" selection-end-line="284" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.46781608" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>JPA</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.46781608" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.46781608" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8.0_201</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.46781608" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>spring-lagou</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.46781608" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Gradle: antlr:antlr:2.7.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.46781608" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
