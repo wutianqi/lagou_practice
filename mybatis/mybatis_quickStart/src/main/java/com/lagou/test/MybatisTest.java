@@ -26,8 +26,9 @@ public class MybatisTest {
         sqlSession.clearCache();
         User user1 = new User();
 //        user1.setId(1);
-        user1.setUsername("aaa");
-        List<User> users = sqlSession.selectList("com.lagou.dao.UserDao.findByCondition",user1);
+//        user1.setUsername("aaa");
+//        List<User> users = sqlSession.selectList("com.lagou.dao.UserDao.findByCondition",user1);
+        List<User> users = sqlSession.selectList("com.lagou.dao.UserDao.findAll");
         for(User user : users){
             System.out.println(user);
         }

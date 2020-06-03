@@ -40,8 +40,8 @@
     <bean id="user2"  factory-bean="instanceMethodFactoryBean" factory-method="getUser" />
 
     <!--依赖注入-->
-    <!--1.构造函数注入-->
-    <bean id="diObj" class="com.lagou.edu.pojo.DIObj">
+    <!--1.构造函数注入-->                             <!--配置延迟加载-->
+    <bean id="diObj" class="com.lagou.edu.pojo.DIObj" lazy-init="true">
         <constructor-arg name="id" value="1" />
         <constructor-arg name="name" value="zs" />
     </bean>

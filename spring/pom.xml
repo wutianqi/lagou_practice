@@ -12,6 +12,7 @@
         <module>no-spring-transfer</module>
         <module>spring-transfer-xml</module>
         <module>spring-transfer-xml-anno</module>
+        <module>spring-transfer-anno</module>
     </modules>
 
 

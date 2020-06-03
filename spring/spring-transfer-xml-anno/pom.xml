@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spring-transfer-xml-anno</artifactId>
-    <description>使用Spring全xml的转账案例</description>
+    <description>使用Spring半xml半注解的转账案例</description>
     <packaging>war</packaging>
 
     <name>spring-transfer-xml-anno Maven Webapp</name>
