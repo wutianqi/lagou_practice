@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+    <!--包扫描配置，开启注解配置-->
+    <component-sacn base-packages="com.lagou.edu" />
+
+    <!--事务注解扫描配置-->
+    <tx-driven transactionManager="transactionManager" />
+</beans>

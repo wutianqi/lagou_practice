@@ -3,14 +3,7 @@ package com.lagou.edu.utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternResolver;
-import org.springframework.core.type.classreading.CachingMetadataReaderFactory;
-import org.springframework.core.type.classreading.MetadataReader;
-import org.springframework.core.type.classreading.MetadataReaderFactory;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -18,6 +11,7 @@ import java.util.List;
  * @author 应癫
  */
 public class JsonUtils {
+
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
     /**

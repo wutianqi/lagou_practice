@@ -1,9 +1,18 @@
 package com.lagou.edu;
 
+import com.lagou.edu.pojo.AopBean;
 import com.lagou.edu.pojo.MyBean;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.core.type.classreading.CachingMetadataReaderFactory;
+import org.springframework.core.type.classreading.MetadataReader;
+import org.springframework.core.type.classreading.MetadataReaderFactory;
+
+import java.io.IOException;
 
 /**
  * 	Bean的生命周期（包括了BeanFactoryPostProcessor）
@@ -29,7 +38,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class MyTest {
 	@Test
-	public void testIoc(){
+	public void testIoc() throws IOException {
 
 		/*
 			BeanFactoryPostProcessor初始化方法，BeanFactoryPostProcessor后处理方法：AbstractApplicationContext#refresh#invokeBeanFactoryPostProcessors
@@ -39,11 +48,15 @@ public class MyTest {
 		 */
 		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
 
-//		MyBean myBean = (MyBean)applicationContext.getBean("myBean");
-//		System.out.println(myBean);
+		//MyBean myBean = (MyBean)applicationContext.getBean("myBean");
+		//System.out.println(myBean);
 
-		Object myBeanA = applicationContext.getBean("myBeanA");
-		System.out.println(myBeanA);
+		//Object myBeanA = applicationContext.getBean("myBeanA");
+		//System.out.println(myBeanA);
+
+		//aop
+		AopBean bean = applicationContext.getBean(AopBean.class);
+		bean.sayHello();
 		applicationContext.close();
 
 	}

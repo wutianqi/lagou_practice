@@ -593,7 +593,9 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		// Initialize the bean instance.
 		Object exposedObject = bean;
 		try {
+			//填充Bean的属性
 			populateBean(beanName, mbd, instanceWrapper);
+			//完成Bean的初始化以及BeanPostProcessor的功能
 			exposedObject = initializeBean(beanName, exposedObject, mbd);
 		}
 		catch (Throwable ex) {
