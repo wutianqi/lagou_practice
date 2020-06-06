@@ -38,8 +38,13 @@ public class MyTest {
 
 		 */
 		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
-		MyBean myBean = (MyBean)applicationContext.getBean("myBean");
-		System.out.println(myBean);
+
+//		MyBean myBean = (MyBean)applicationContext.getBean("myBean");
+//		System.out.println(myBean);
+
+		Object myBeanA = applicationContext.getBean("myBeanA");
+		System.out.println(myBeanA);
 		applicationContext.close();
+
 	}
 }

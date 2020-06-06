@@ -11,9 +11,19 @@
 ">
 	<context:component-scan base-package="com.lagou" />
 
-	<bean id="myBean" class="com.lagou.edu.pojo.MyBean" init-method="initMethod" destroy-method="destroyMethod">
+	<!--测试Bean的生命周期时，使用此类-->
+	<!--
+	<bean id="myBean" class="com.lagou.edu.pojo.MyBean" init-method="initMethod" destroy-method="destroyMethod" lazy-init="true">
 		<property name="username" value="zs" />
 		<property name="password" value="123" />
 	</bean>
+	-->
 
+	<!--测试循环依赖使用下面两个类-->
+	<bean id="myBeanA" class="com.lagou.edu.pojo.MyBeanA" scope="singleton">
+		<property name="myBeanB" ref="myBeanB" />
+	</bean>
+	<bean id="myBeanB" class="com.lagou.edu.pojo.MyBeanB" scope="singleton">
+		<property name="myBeanA" ref="myBeanA" />
+	</bean>
 </beans>

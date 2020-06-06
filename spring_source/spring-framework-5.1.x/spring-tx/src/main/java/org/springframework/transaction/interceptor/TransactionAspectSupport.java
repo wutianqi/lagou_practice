@@ -680,7 +680,7 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
 	 * Concrete interceptors/aspects adapt this to their invocation mechanism.
 	 */
 	@FunctionalInterface
-	protected interface InvocationCallback {
+	public interface InvocationCallback {
 
 		Object proceedWithInvocation() throws Throwable;
 	}

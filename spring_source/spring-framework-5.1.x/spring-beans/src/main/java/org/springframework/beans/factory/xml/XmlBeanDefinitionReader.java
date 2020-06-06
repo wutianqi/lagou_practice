@@ -511,6 +511,9 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 	public int registerBeanDefinitions(Document doc, Resource resource) throws BeanDefinitionStoreException {
 		BeanDefinitionDocumentReader documentReader = createBeanDefinitionDocumentReader();
 		int countBefore = getRegistry().getBeanDefinitionCount();
+		//这里的createReaderContext创建的是namespace handler，主要是为了
+		//处理<context:annotation-context />中的context这样的标签的。处理器定义
+		//在各个项目的META-INF/spring.hanlders下面
 		documentReader.registerBeanDefinitions(doc, createReaderContext(resource));
 		return getRegistry().getBeanDefinitionCount() - countBefore;
 	}

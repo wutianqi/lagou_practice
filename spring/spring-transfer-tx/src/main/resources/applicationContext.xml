@@ -1,0 +1,59 @@
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        https://www.springframework.org/schema/tx/spring-tx.xsd
+">
+    <context:component-scan base-package="com.lagou" />
+
+    <context:property-placeholder location="classpath:jdbc.properties" />
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${driverClassName}" />
+        <property name="url" value="${url}" />
+        <property name="username" value="${jdbcUsername}" />
+        <property name="password" value="${jdbcPassword}" />
+     </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" >
+        <constructor-arg name="dataSource" ref="dataSource" />
+    </bean>
+
+
+    <!--事务管理器 DataSourceTransactionManager是Spring为了我们内置的一个事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
+        <constructor-arg name="dataSource" ref="dataSource" />
+    </bean>
+    <!--xml方式配置声明式事务-->
+    <!--配置事务，其实就是配置切面-->
+
+    <!--配置通知-->
+    <tx:advice id="transactionInterceptor" transaction-manager="transactionManager" >
+        <tx:attributes>
+            <!--name标识需要拦截的方法，read-only标识是否只读，timeout表示事务超时时间，propagation表示传播机制-->
+            <tx:method name="*" read-only="false" timeout="-1" propagation="REQUIRED" />
+            <tx:method name="query" read-only="true" propagation="SUPPORTS" />
+        </tx:attributes>
+    </tx:advice>
+
+    <!--配置aop-->
+    <!--配置切面  advisor是spring中的aop实现方式，一个切入点对应一个advice
+            而aspectj则是aspectj的aop实现方式，一个切入点对应一个切面类，里面含有多个advice
+            advisor是Spring为了简化操作
+        -->
+<!--    <aop:config>-->
+<!--        <aop:advisor advice-ref="transactionInterceptor" pointcut="execution(* com.lagou.edu.service.impl.TransferServiceImpl.*(..))" />-->
+<!--    </aop:config>-->
+
+    <!--半xml+半注解方式配置声明式事务-->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+</beans>

@@ -818,14 +818,19 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 
 		// Iterate over a copy to allow for init methods which in turn register new bean definitions.
 		// While this may not be part of the regular factory bootstrap, it does otherwise work fine.
+		//所有BeanDefinition集合
 		List<String> beanNames = new ArrayList<>(this.beanDefinitionNames);
 
 		// Trigger initialization of all non-lazy singleton beans...
+		//触发所有非懒加载单例bean的初始化
 		for (String beanName : beanNames) {
+			//获取Bean定义
 			RootBeanDefinition bd = getMergedLocalBeanDefinition(beanName);
+			//判断是否是懒加载单例bean，如果是单例的并且不是懒加载的则在容器初始化的时候就创建
 			if (!bd.isAbstract() && bd.isSingleton() && !bd.isLazyInit()) {
 				if (isFactoryBean(beanName)) {
 					Object bean = getBean(FACTORY_BEAN_PREFIX + beanName);
+					//是否为FactoryBean
 					if (bean instanceof FactoryBean) {
 						final FactoryBean<?> factory = (FactoryBean<?>) bean;
 						boolean isEagerInit;
@@ -844,6 +849,8 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 					}
 				}
 				else {
+					//如果是普通bean则进行初始化并依赖注入，此getBean(beanName)接下来触发的
+					//逻辑和懒加载时context.getBean("beanName")所触发的逻辑是一样的。
 					getBean(beanName);
 				}
 			}
@@ -932,6 +939,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 			}
 			else {
 				// Still in startup registration phase
+				//注册BeanDefinition
 				this.beanDefinitionMap.put(beanName, beanDefinition);
 				this.beanDefinitionNames.add(beanName);
 				removeManualSingletonName(beanName);

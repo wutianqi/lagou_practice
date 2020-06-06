@@ -13,6 +13,8 @@
         <module>spring-transfer-xml</module>
         <module>spring-transfer-xml-anno</module>
         <module>spring-transfer-anno</module>
+        <module>spring-transfer-aop</module>
+        <module>spring-transfer-tx</module>
     </modules>
 
 
