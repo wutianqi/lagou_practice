@@ -2,6 +2,7 @@ package com.lagou.edu;
 
 import com.lagou.edu.pojo.AopBean;
 import com.lagou.edu.pojo.MyBean;
+import com.lagou.edu.tx.TransactionServiceImpl;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -57,6 +58,10 @@ public class MyTest {
 		//aop
 		AopBean bean = applicationContext.getBean(AopBean.class);
 		bean.sayHello();
+
+		//tx
+//		TransactionServiceImpl bean = applicationContext.getBean(TransactionServiceImpl.class);
+//		bean.transfer();
 		applicationContext.close();
 
 	}

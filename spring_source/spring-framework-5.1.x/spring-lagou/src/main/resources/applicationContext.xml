@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	   xmlns:aop="http://www.springframework.org/schema/aop"
 	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:schemaLocation="
 	    http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         https://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
 ">
-<!--	<context:component-scan base-package="com.lagou" />-->
+	<context:component-scan base-package="com.lagou" />
 
 	<!--测试Bean的生命周期时，使用此类-->
 	<!--
@@ -21,12 +23,27 @@
 
 	<!--测试循环依赖使用下面两个类-->
 
-	<bean id="myBeanA" class="com.lagou.edu.pojo.MyBeanA" scope="singleton">
-		<property name="myBeanB" ref="myBeanB" />
+<!--	<bean id="myBeanA" class="com.lagou.edu.pojo.MyBeanA" scope="singleton">-->
+<!--		<property name="myBeanB" ref="myBeanB" />-->
+<!--	</bean>-->
+<!--	<bean id="myBeanB" class="com.lagou.edu.pojo.MyBeanB" scope="singleton">-->
+<!--		<property name="myBeanA" ref="myBeanA" />-->
+<!--	</bean>-->
+
+	<!--advisor配置-->
+<!--	<aop:config >-->
+<!--		<aop:advisor advice-ref="myInterceptor" pointcut="execution(* com.lagou.edu.pojo.AopBean.*(..))" />-->
+<!--	</aop:config>-->
+
+	<!---事务配置-->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" >
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/lagou" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
 	</bean>
-	<bean id="myBeanB" class="com.lagou.edu.pojo.MyBeanB" scope="singleton">
-		<property name="myBeanA" ref="myBeanA" />
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
+		<constructor-arg name="dataSource" ref="dataSource" />
 	</bean>
 
-	
 </beans>
