@@ -1,0 +1,58 @@
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        https://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd
+">
+
+    <context:property-placeholder location="classpath*:jdbc.properties" />
+    <context:component-scan base-package="com.lagou.edu" />
+
+    <!--
+        mybatis整合spring
+        1.将连接池和事务管理器交给spring管理
+        2.将SqlSessionFactoryBean交给spring管理，由spring维护这个单例bean
+        3.Mapper代理类由spring来生成
+    -->
+    <!--连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${driverClass}" />
+        <property name="url" value="${driverUrl}" />
+        <property name="username" value="${jdbc.userName}" />
+        <property name="password" value="${jdbc.password}" />
+    </bean>
+    <!--事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <constructor-arg name="dataSource" ref="dataSource" />
+    </bean>
+
+    <!--SqlSessionFactoryBean-->
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="typeAliasesPackage" value="com.lagou.edu.dao" />
+    </bean>
+
+    <!--mapper动态代理由spring创建-->
+    <bean id="mapperScan" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.lagou.edu.dao" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean" />
+    </bean>
+
+    <!--事务驱动-->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+
+
+
+    <!--下面为mvc配置-->
+    <mvc:annotation-driven />
+</beans>

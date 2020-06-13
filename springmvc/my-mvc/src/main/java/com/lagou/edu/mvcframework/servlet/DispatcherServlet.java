@@ -1,9 +1,6 @@
 package com.lagou.edu.mvcframework.servlet;
 
-import com.lagou.edu.mvcframework.annotations.Autowired;
-import com.lagou.edu.mvcframework.annotations.Controller;
-import com.lagou.edu.mvcframework.annotations.RequestMapping;
-import com.lagou.edu.mvcframework.annotations.Service;
+import com.lagou.edu.mvcframework.annotations.*;
 import com.lagou.edu.mvcframework.handlerMapping.HandlerMapping;
 import org.apache.commons.lang3.StringUtils;
 
@@ -15,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -82,12 +80,30 @@ public class DispatcherServlet extends HttpServlet {
             Class<?> beanClass = bean.getClass();
             if(!beanClass.isAnnotationPresent(Controller.class)){continue;}
 
+            //解析类@RequestMapping中的值
             RequestMapping classRequestMappingAnnotation = beanClass.getAnnotation(RequestMapping.class);
-            //父类@RequestMapping中的值
-            String classRequestMapping = classRequestMappingAnnotation.value();
+            String classRequestMapping = "";
+            if(classRequestMappingAnnotation != null){
+                classRequestMapping = classRequestMappingAnnotation.value();
+            }
+
+
+            //解析类上@Security
+            List<String> allowUserNames = new ArrayList<>();
+            if(beanClass.isAnnotationPresent(Security.class)){
+                //存在@Security注解
+                Security classSecurityAnnotation = beanClass.getAnnotation(Security.class);
+                String[] allowUsersArr = classSecurityAnnotation.allowUsers();
+                if(allowUsersArr.length > 0){
+                    //存储允许访问的用户
+                    allowUserNames.addAll(Arrays.asList(allowUsersArr));
+                }
+            }
+
 
             Method[] methods = beanClass.getMethods();
             for(Method method : methods){
+                //方法不标注@RequestMapping就不处理
                 if(!method.isAnnotationPresent(RequestMapping.class)){continue;}
 
                 RequestMapping methodRequestMappingAnnotation = method.getAnnotation(RequestMapping.class);
@@ -113,7 +129,20 @@ public class DispatcherServlet extends HttpServlet {
                     }
                 }
 
-                HandlerMapping handlerMapping = new HandlerMapping(method, bean, urlPattern, parameterMapping);
+                //解析@Security注解
+                List<String> methodAllowUsers = new ArrayList<>(allowUserNames);
+                if(method.isAnnotationPresent(Security.class)){
+                    //存在@Security注解
+                    Security methodSecurityAnnotation = method.getAnnotation(Security.class);
+                    String[] allowUsers = methodSecurityAnnotation.allowUsers();
+                    if(allowUsers.length > 0){
+                        //添加有权限访问的用户
+                        methodAllowUsers.addAll(Arrays.asList(allowUsers));
+                    }
+                }
+
+                //构建HandlerMapping
+                HandlerMapping handlerMapping = new HandlerMapping(method, bean, urlPattern, parameterMapping, methodAllowUsers);
                 handlerMappings.add(handlerMapping);
             }
         }
@@ -225,12 +254,28 @@ public class DispatcherServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/plain;charset=UTF-8");
+
         //获取url对应的Handler，取出请求中所带参数，并设置到Handler方法中，调用handler的方法
         if(handlerMappings.size() == 0){return;}
         String requestURI = req.getRequestURI();
-        System.out.println(requestURI);
         for(HandlerMapping handlerMapping : handlerMappings){
+            //不匹配url，则忽略
             if(!handlerMapping.getUrlPattern().matcher(requestURI).matches()){continue;}
+
+            //调用handler方法之前进行权限的校验
+            List<String> allowUsers = handlerMapping.getAllowUsers();
+            String username = req.getParameter("username");
+            if(StringUtils.isBlank(username) || !allowUsers.contains(username)){
+                //无权限，则提示，结束
+                PrintWriter writer = resp.getWriter();
+                writer.write("对不起，您无权限访问");
+                writer.flush();
+                return;
+            }
+
 
             //匹配上，则进行参数封装及调用
             Map<Integer, String> parameterMapping = handlerMapping.getParameterMapping();
@@ -261,9 +306,10 @@ public class DispatcherServlet extends HttpServlet {
             }
 
             try {
-                handlerMapping.getHandler().invoke(handlerMapping.getBean(), args);
-
-                req.getRequestDispatcher("/index.jsp").forward(req, resp);
+                Object invoke = handlerMapping.getHandler().invoke(handlerMapping.getBean(), args);
+                if(invoke != null){
+                    req.getRequestDispatcher("/WEB-INF/jsp/" + (String)invoke + ".jsp").forward(req, resp);
+                }
             } catch (IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();
             }

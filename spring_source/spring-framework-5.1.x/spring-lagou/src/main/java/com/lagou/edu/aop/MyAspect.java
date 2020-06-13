@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @EnableAspectJAutoProxy
 public class MyAspect {
 
-	@Pointcut("execution(* com.lagou.edu.pojo.AopBean.*(..))")
+	@Pointcut("execution(* com.lagou.edu.pojo.MyBeanA.*(..))")
 	public void pointcut(){}
 
 	@Before(value = "pointcut()")

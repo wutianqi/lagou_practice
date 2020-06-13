@@ -1,6 +1,7 @@
 package com.lagou.edu.mvcframework.handlerMapping;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -31,12 +32,18 @@ public class HandlerMapping {
      */
     private Map<Integer, String> parameterMapping;
 
+    /**
+     * 允许访问该Handler的用户名列表
+     */
+    private List<String> allowUsers;
 
-    public HandlerMapping(Method handler, Object bean, Pattern urlPattern, Map<Integer, String> parameterMapping) {
+
+    public HandlerMapping(Method handler, Object bean, Pattern urlPattern, Map<Integer, String> parameterMapping, List<String> allowUsers) {
         this.handler = handler;
         this.bean = bean;
         this.urlPattern = urlPattern;
         this.parameterMapping = parameterMapping;
+        this.allowUsers = allowUsers;
     }
 
     public Method getHandler() {
@@ -69,5 +76,13 @@ public class HandlerMapping {
 
     public void setParameterMapping(Map<Integer, String> parameterMapping) {
         this.parameterMapping = parameterMapping;
+    }
+
+    public List<String> getAllowUsers() {
+        return allowUsers;
+    }
+
+    public void setAllowUsers(List<String> allowUsers) {
+        this.allowUsers = allowUsers;
     }
 }

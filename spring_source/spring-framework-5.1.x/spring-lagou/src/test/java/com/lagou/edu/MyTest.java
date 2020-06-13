@@ -49,15 +49,15 @@ public class MyTest {
 		 */
 		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
 
-		//MyBean myBean = (MyBean)applicationContext.getBean("myBean");
-		//System.out.println(myBean);
+		MyBean myBean = (MyBean)applicationContext.getBean("myBeanB");
+		System.out.println(myBean);
 
-		//Object myBeanA = applicationContext.getBean("myBeanA");
-		//System.out.println(myBeanA);
+		Object myBeanA = applicationContext.getBean("myBeanA");
+		System.out.println(myBeanA);
 
 		//aop
-		AopBean bean = applicationContext.getBean(AopBean.class);
-		bean.sayHello();
+//		AopBean bean = applicationContext.getBean(AopBean.class);
+//		bean.sayHello();
 
 		//tx
 //		TransactionServiceImpl bean = applicationContext.getBean(TransactionServiceImpl.class);

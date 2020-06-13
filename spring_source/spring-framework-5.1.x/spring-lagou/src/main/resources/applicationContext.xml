@@ -23,12 +23,12 @@
 
 	<!--测试循环依赖使用下面两个类-->
 
-<!--	<bean id="myBeanA" class="com.lagou.edu.pojo.MyBeanA" scope="singleton">-->
-<!--		<property name="myBeanB" ref="myBeanB" />-->
-<!--	</bean>-->
-<!--	<bean id="myBeanB" class="com.lagou.edu.pojo.MyBeanB" scope="singleton">-->
-<!--		<property name="myBeanA" ref="myBeanA" />-->
-<!--	</bean>-->
+	<bean id="myBeanA" class="com.lagou.edu.pojo.MyBeanA" scope="singleton">
+		<property name="myBeanB" ref="myBeanB" />
+	</bean>
+	<bean id="myBeanB" class="com.lagou.edu.pojo.MyBeanB" scope="singleton">
+		<property name="myBeanA" ref="myBeanA" />
+	</bean>
 
 	<!--advisor配置-->
 <!--	<aop:config >-->
@@ -36,14 +36,14 @@
 <!--	</aop:config>-->
 
 	<!---事务配置-->
-	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" >
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/lagou" />
-		<property name="username" value="root" />
-		<property name="password" value="root" />
-	</bean>
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
-		<constructor-arg name="dataSource" ref="dataSource" />
-	</bean>
+<!--	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" >-->
+<!--		<property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
+<!--		<property name="url" value="jdbc:mysql://localhost:3306/lagou" />-->
+<!--		<property name="username" value="root" />-->
+<!--		<property name="password" value="root" />-->
+<!--	</bean>-->
+<!--	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >-->
+<!--		<constructor-arg name="dataSource" ref="dataSource" />-->
+<!--	</bean>-->
 
 </beans>

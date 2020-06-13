@@ -27,6 +27,9 @@ import java.util.UUID;
 public class HandlerController {
 
     //http://localhost:8080/demo/handle02
+    /*
+        @ModelAttribute用于接收重定向时接收的参数
+     */
     @RequestMapping("/handle01")
     public ModelAndView handle01(@ModelAttribute("name") String name){
         Date date = new Date();
