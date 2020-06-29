@@ -1,0 +1,17 @@
+#有properties文件时，该文件种的属性将会被覆盖
+person:
+  id: 1
+  name: 张三
+  hobby: 吃饭,睡觉
+  #数组
+  family:
+    father,
+    mother
+  #集合
+  map:
+    k1: v1
+    k2: v2
+  #对象
+  pet:
+    type: 1
+    name: gg
